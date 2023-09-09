@@ -30,6 +30,7 @@ import {
 } from "phosphor-react";
 // import { AntSwitch } from "../../components/AntSwitch";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 // import useSettings from "../../hooks/useSettings";
 //
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -45,27 +46,32 @@ const navButtons = [
   {
     index: 0,
     name: "Dashboard",
+    path: "/app",
     icon: <Graph />,
   },
   {
     index: 1,
     name: "Students Management",
+    path: "/students",
     icon: <Users />,
   },
   {
     index: 2,
     name: "Books Management",
+    path: "/app",
     icon: <Books />,
   },
   {
     index: 3,
     name: "Documents Management",
+    path: "/sample",
     icon: <FileDoc />,
   },
 
   {
     index: 4,
     name: "Archive",
+    path: "",
     icon: <Archive />,
   },
 
@@ -97,7 +103,13 @@ export default function Sidebar({
   handleDrawerClose,
 }: any) {
   const theme = useTheme() as Theme;
-  const [selected, setSelected] = useState<number>(0);
+
+  const location = useLocation();
+
+  const getIndex = navButtons
+    .filter((item) => (item.path === location.pathname ? item.index : 0))
+    .map((item) => item.index);
+  const [selected, setSelected] = useState<number>(getIndex[0]);
 
   // const [anchorEl, setAnchorEl] = useState(null);
   // const open = Boolean(anchorEl);
@@ -198,43 +210,11 @@ export default function Sidebar({
                   }}
                 >
                   <Stack direction="row" alignItems="center">
-                    <IconButton
-                      sx={{
-                        width: "max-content",
-                        color: "#ffffff",
-                      }}
-                      key={el.index}
-                    >
-                      <Stack direction="row" spacing={2}>
-                        {el.icon}
-                        {open && (
-                          <Typography
-                            variant="subtitle2"
-                            sx={{ fontWeight: "300" }}
-                          >
-                            {el.name}
-                          </Typography>
-                        )}
-                      </Stack>
-                    </IconButton>
-                  </Stack>
-                </Box>
-              ) : (
-                <>
-                  {open && (
-                    <Stack
-                      width={"max-content"}
-                      direction="row"
-                      alignItems="center"
-                    >
+                    <Link to={el.path as string}>
                       <IconButton
-                        onClick={() => setSelected(el.index)}
                         sx={{
                           width: "max-content",
-                          color:
-                            theme.palette.mode === "light"
-                              ? "##000"
-                              : theme.palette.text.primary,
+                          color: "#ffffff",
                         }}
                         key={el.index}
                       >
@@ -250,24 +230,62 @@ export default function Sidebar({
                           )}
                         </Stack>
                       </IconButton>
+                    </Link>
+                  </Stack>
+                </Box>
+              ) : (
+                <>
+                  {open && (
+                    <Stack
+                      width={"max-content"}
+                      direction="row"
+                      alignItems="center"
+                    >
+                      <Link to={el.path as string}>
+                        <IconButton
+                          onClick={() => setSelected(el.index)}
+                          sx={{
+                            width: "max-content",
+                            color:
+                              theme.palette.mode === "light"
+                                ? "##000"
+                                : theme.palette.text.primary,
+                          }}
+                          key={el.index}
+                        >
+                          <Stack direction="row" spacing={2}>
+                            {el.icon}
+                            {open && (
+                              <Typography
+                                variant="subtitle2"
+                                sx={{ fontWeight: "300" }}
+                              >
+                                {el.name}
+                              </Typography>
+                            )}
+                          </Stack>
+                        </IconButton>
+                      </Link>{" "}
                     </Stack>
                   )}
 
                   {!open && (
                     <Tooltip title={el.name} placement="right" key={el.index}>
-                      <IconButton
-                        onClick={() => setSelected(el.index)}
-                        sx={{
-                          width: "max-content",
-                          color:
-                            theme.palette.mode === "light"
-                              ? "##000"
-                              : theme.palette.text.primary,
-                        }}
-                        key={el.index}
-                      >
-                        {el.icon}
-                      </IconButton>
+                      <Link to={el.path as string}>
+                        <IconButton
+                          onClick={() => setSelected(el.index)}
+                          sx={{
+                            width: "max-content",
+                            color:
+                              theme.palette.mode === "light"
+                                ? "##000"
+                                : theme.palette.text.primary,
+                          }}
+                          key={el.index}
+                        >
+                          {el.icon}
+                        </IconButton>
+                      </Link>
                     </Tooltip>
                   )}
                 </>

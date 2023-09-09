@@ -20,6 +20,6 @@ export default function GeneralApp() {
     //   {/* Contact */}
     //   <Contact />
     // </Stack>
-    <></>
+    <>Test Sample Routes</>
   );
 }

@@ -2,9 +2,11 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ThemeSettings from "./components/Settings/ThemeSettings";
 import ThemeProvider from "./theme/ThemeProvider";
 import Page404 from "./pages/404";
-import GeneralApp from "./pages/GeneralApp";
+// import GeneralApp from "./pages/GeneralApp";
 import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Students from "./pages/Students/Students";
+import GeneralApp from "./pages/GeneralApp";
 
 function App() {
   return (
@@ -13,10 +15,11 @@ function App() {
         <Router>
           <Routes>
             <Route element={<AdminLayout />}>
-              <Route index path="/" element={<Dashboard />} />
-              <Route path="/app" element={<GeneralApp />} />
-              <Route path="*" element={<Page404 />} />
+              <Route index path="/app" element={<Dashboard />} />
+              <Route path="/sample" element={<GeneralApp />} />
+              <Route path="/students" element={<Students />} />
             </Route>
+            <Route path="*" element={<Page404 />} />
           </Routes>
         </Router>
       </ThemeSettings>
