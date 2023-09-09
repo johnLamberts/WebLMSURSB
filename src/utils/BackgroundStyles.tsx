@@ -15,7 +15,7 @@ export default function BackgroundStyles(theme: Theme) {
       const color =
         props?.color || theme?.palette.background.default || `#000000`;
 
-      const blue = props?.blur || 6;
+      // const blue = props?.blur || 6;
       const opacity = props?.opacity || 0.8;
 
       return {
