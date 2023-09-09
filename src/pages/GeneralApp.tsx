@@ -1,11 +1,4 @@
-import Chats from "../features/Chats/Chats";
-import { Box, Stack, Theme } from "@mui/material";
-import Conversations from "../features/Conversations/Conversations";
-import { useTheme } from "@emotion/react";
-import Contact from "../components/Contact";
-
 export default function GeneralApp() {
-  const theme = useTheme() as Theme;
   return (
     // <Stack direction="row" sx={{ width: "100%", overflow: "hidden" }}>
     //   {/* Chats */}
