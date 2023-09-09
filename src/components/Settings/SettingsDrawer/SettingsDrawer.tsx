@@ -14,7 +14,6 @@ import ToggleButton from "./ToggleButton";
 import { AnimatePresence, m } from "framer-motion";
 import BackgroundStyles from "../../../utils/BackgroundStyles";
 import Iconify from "../../Icons";
-import Scrollbar from "../../Scrollbar";
 import SettingDirection from "./SettingsDirection";
 import SettingsColorPreset from "./SettingsColorPresets";
 
@@ -123,19 +122,19 @@ export default function SettingsDrawer() {
 
               <Divider sx={{ borderStyle: "dashed" }} />
 
-              <Scrollbar sx={{ flexGrow: 1 }}>
-                <Stack spacing={3} sx={{ p: 3 }}>
-                  <Stack spacing={1.5}>
-                    <Typography variant="subtitle2">Direction</Typography>
-                    <SettingDirection />
-                  </Stack>
-
-                  <Stack spacing={1.5}>
-                    <Typography variant="subtitle2">Presets</Typography>
-                    <SettingsColorPreset />
-                  </Stack>
+              {/* <Scrollbar sx={{ flexGrow: 1 }}> */}
+              <Stack spacing={3} sx={{ p: 3 }}>
+                <Stack spacing={1.5}>
+                  <Typography variant="subtitle2">Direction</Typography>
+                  <SettingDirection />
                 </Stack>
-              </Scrollbar>
+
+                <Stack spacing={1.5}>
+                  <Typography variant="subtitle2">Presets</Typography>
+                  <SettingsColorPreset />
+                </Stack>
+              </Stack>
+              {/* </Scrollbar> */}
             </RootStyled>
           </>
         )}
