@@ -58,7 +58,7 @@ const navButtons = [
   {
     index: 2,
     name: "Books Management",
-    path: "/app",
+    path: "/asdasd",
     icon: <Books />,
   },
   {
@@ -109,8 +109,9 @@ export default function Sidebar({
   const getIndex = navButtons
     .filter((item) => (item.path === location.pathname ? item.index : 0))
     .map((item) => item.index);
-  const [selected, setSelected] = useState<number>(getIndex[0]);
+  const [selected, setSelected] = useState<number>(getIndex[0] ?? 0);
 
+  console.log(selected);
   // const [anchorEl, setAnchorEl] = useState(null);
   // const open = Boolean(anchorEl);
 

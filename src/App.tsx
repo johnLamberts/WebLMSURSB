@@ -14,8 +14,8 @@ function App() {
       <ThemeSettings>
         <Router>
           <Routes>
-            <Route element={<AdminLayout />}>
-              <Route index path="/" element={<Dashboard />} />
+            <Route path="/" element={<AdminLayout />}>
+              <Route index path="/app" element={<Dashboard />} />
               <Route path="/sample" element={<GeneralApp />} />
               <Route path="/students" element={<Students />} />
             </Route>
