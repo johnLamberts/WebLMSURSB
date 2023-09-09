@@ -26,8 +26,6 @@ import {
   List,
   Notebook,
   // Phone,
-  SignOut,
-  User,
   Users,
 } from "phosphor-react";
 // import { AntSwitch } from "../../components/AntSwitch";
@@ -102,7 +100,7 @@ export default function Sidebar({
   // const { onToggleMode } = useSettings();
   const [selected, setSelected] = useState<number>(0);
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  // const [anchorEl, setAnchorEl] = useState(null);
   // const open = Boolean(anchorEl);
 
   // function handleClick(event: any) {

@@ -24,7 +24,7 @@ export default function GetFontValue(variant: string | number) {
       ? theme.typography[variant as Variant][key]
       : theme.typography[variant as Variant];
 
-  const fontSize = remToPx(getFont.fontSize);
+  const fontSize = remToPx((getFont as any).fontSize);
 
   const lineHeight =
     Number((theme as any).typography[variant].lineHeight) * fontSize;

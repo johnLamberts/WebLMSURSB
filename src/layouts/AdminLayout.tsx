@@ -15,17 +15,12 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import MuiDrawer from "@mui/material/Drawer";
 import { useState } from "react";
-import { useTheme } from "@mui/material";
 // import { ArrowLeft, ArrowRight, Chat, Envelope, List } from "phosphor-react";
 
 const drawerWidth = 280;
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {

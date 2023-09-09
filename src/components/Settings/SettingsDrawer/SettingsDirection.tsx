@@ -1,10 +1,4 @@
-import {
-  CardActionArea,
-  Grid,
-  RadioGroup,
-  ThemeOptions,
-  styled,
-} from "@mui/material";
+import { CardActionArea, Grid, RadioGroup, styled } from "@mui/material";
 import useSettings from "../../../hooks/useSettings";
 import Iconify from "../../Icons";
 import BoxMask from "./BoxMask";
