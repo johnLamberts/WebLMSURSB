@@ -30,8 +30,6 @@ import {
 } from "phosphor-react";
 // import { AntSwitch } from "../../components/AntSwitch";
 import { useState } from "react";
-import { AntSwitch } from "../../components/AntSwitch";
-import useSettings from "../../hooks/useSettings";
 // import useSettings from "../../hooks/useSettings";
 //
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -99,7 +97,6 @@ export default function Sidebar({
   handleDrawerClose,
 }: any) {
   const theme = useTheme() as Theme;
-  const { onToggleMode } = useSettings();
   const [selected, setSelected] = useState<number>(0);
 
   // const [anchorEl, setAnchorEl] = useState(null);
@@ -311,9 +308,6 @@ export default function Sidebar({
               </Tooltip>
             )}
           </Stack>
-        </Stack>
-        <Stack alignItems="center" spacing={2}>
-          <AntSwitch onChange={onToggleMode} defaultChecked />
         </Stack>
         {/* <Stack alignItems="center" spacing={2}>
           <AntSwitch onChange={onToggleMode} defaultChecked />
