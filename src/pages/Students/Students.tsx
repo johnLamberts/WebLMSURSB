@@ -4,17 +4,21 @@ import {
   GridApi,
   GridColDef,
   GridToolbar,
-  useGridApiRef,
   GridKeyValue,
 } from "@mui/x-data-grid";
 import useSettings from "../../hooks/useSettings";
 import TitleHeader from "../../components/TitleHeader";
+import { useState } from "react";
 
 export default function Students() {
   const { themeMode } = useSettings();
 
-  const apiRef = useGridApiRef();
   const theme = useTheme();
+
+  const [paginationModel, setPaginationModel] = useState({
+    pageSize: 5,
+    page: 0,
+  });
   const mockDataContacts = [
     {
       id: 1,
@@ -206,13 +210,12 @@ export default function Students() {
     },
   ];
 
-  console.log(apiRef);
   return (
     <Box width={"100%"}>
       <TitleHeader title="Students" subtitle="List of Students" />
       <Box
         m="10px 0 0 0"
-        height="75vh"
+        height="65vh"
         width={"100%"}
         sx={{
           "& .MuiDataGrid-root": {
@@ -254,6 +257,9 @@ export default function Students() {
           rows={mockDataContacts}
           columns={columns}
           slots={{ toolbar: GridToolbar }}
+          paginationModel={paginationModel}
+          onPaginationModelChange={setPaginationModel}
+          pageSizeOptions={[5, 10, 15]}
         />
       </Box>
     </Box>
