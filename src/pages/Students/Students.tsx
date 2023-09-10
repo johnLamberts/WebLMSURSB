@@ -1,9 +1,11 @@
-import { Box, alpha, useTheme } from "@mui/material";
+import { Box, Button, alpha, useTheme } from "@mui/material";
 import {
   DataGrid,
+  GridApi,
   GridColDef,
   GridToolbar,
   useGridApiRef,
+  GridKeyValue,
 } from "@mui/x-data-grid";
 import useSettings from "../../hooks/useSettings";
 import TitleHeader from "../../components/TitleHeader";
@@ -178,7 +180,29 @@ export default function Students() {
     },
     {
       field: "actions",
-      headerName: "",
+      headerName: "Action",
+      sortable: false,
+      renderCell: (params) => {
+        const onClick = (e: any) => {
+          e.stopPropagation();
+
+          const api: GridApi = params.api;
+
+          const thisRow: Record<string, GridKeyValue> = {};
+
+          api
+            .getAllColumns()
+            .filter((c) => c.field !== "__check__" && !!c)
+            .forEach(
+              (c) =>
+                (thisRow[c.field] = params.api.getCellValue(params.id, c.field))
+            );
+
+          alert(JSON.stringify(thisRow, null, 4));
+        };
+
+        return <Button onClick={onClick}>Menu</Button>;
+      },
     },
   ];
 
