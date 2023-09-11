@@ -67,7 +67,7 @@ export default function AdminLayout() {
   };
 
   return (
-    <Box sx={{ display: "flex", overflowX: "hidden" }}>
+    <Box sx={{ display: "flex", overflowX: "hidden", maxHeight: "100vh" }}>
       <Stack direction="row">
         <Drawer variant="permanent" open={open}>
           <Sidebar
@@ -77,7 +77,7 @@ export default function AdminLayout() {
           />
         </Drawer>
       </Stack>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, overflowY: "hidden" }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 2, overflowY: "hidden" }}>
         <Header />
         <DrawerHeader />
         <Box sx={{ width: "100%" }}>

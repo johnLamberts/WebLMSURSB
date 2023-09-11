@@ -307,24 +307,46 @@ export default function Sidebar({
                     color: "#ffffff",
                   }}
                 >
-                  <Gear size={25} />
+                  <Stack direction="row" spacing={2}>
+                    <Gear size={25} />
+                    {open && (
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ fontWeight: "300" }}
+                      >
+                        Settings
+                      </Typography>
+                    )}
+                  </Stack>
                 </IconButton>
               </Box>
             ) : (
-              <Tooltip title={"Settings"} placement="right">
-                <IconButton
-                  onClick={() => setSelected(getSettings + 1)}
-                  sx={{
-                    width: "max-content",
-                    color:
-                      theme.palette.mode === "light"
-                        ? "#000000"
-                        : theme.palette.text.primary,
-                  }}
-                >
-                  <Gear size={25} />
-                </IconButton>
-              </Tooltip>
+              open && (
+                <Tooltip title={"Settings"} placement="right">
+                  <IconButton
+                    onClick={() => setSelected(getSettings + 1)}
+                    sx={{
+                      width: "max-content",
+                      color:
+                        theme.palette.mode === "light"
+                          ? "#000000"
+                          : theme.palette.text.primary,
+                    }}
+                  >
+                    <Stack direction="row" spacing={2}>
+                      <Gear size={25} />
+                      {open && (
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontWeight: "300" }}
+                        >
+                          Settings
+                        </Typography>
+                      )}
+                    </Stack>
+                  </IconButton>
+                </Tooltip>
+              )
             )}
           </Stack>
         </Stack>
