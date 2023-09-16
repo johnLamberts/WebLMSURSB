@@ -141,6 +141,51 @@ export default function StudentForms({ handleDrawerClose }: any) {
             }}
           >
             <Stack direction="column" spacing={5} p={0.5}>
+              {/* <TextField
+                placeholder="A0000-2000"
+                error={errors.studentNo ? true : false}
+                label="Student Number *"
+                helperText={
+                  errors.studentNo?.type === "required"
+                    ? "This field is required"
+                    : errors.studentNo?.type === "minLength"
+                    ? "This field must be atleast 2 characters long"
+                    : null
+                }
+                variant="filled"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {<ArticleMedium />}
+                    </InputAdornment>
+                  ),
+                }}
+                {...register("studentNo", { required: true })}
+              >
+                <InputMask mask="(0)999 999 99 99" maskChar=" " />
+              </TextField> */}
+              {/* <TextField
+                placeholder="A0000-2000"
+                error={errors.studentNo ? true : false}
+                label="Student Number *"
+                helperText={
+                  errors.studentNo?.type === "required"
+                    ? "This field is required"
+                    : errors.studentNo?.type === "minLength"
+                    ? "This field must be atleast 2 characters long"
+                    : null
+                }
+                variant="filled"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {<ArticleMedium />}
+                    </InputAdornment>
+                  ),
+                }}
+                {...register("studentNo", { required: true })}
+              /> */}
+
               <TextField
                 error={errors.firstName ? true : false}
                 id="filled-error-helper-text"
@@ -184,7 +229,7 @@ export default function StudentForms({ handleDrawerClose }: any) {
                 {...register("middleName", { required: true, minLength: 2 })}
               />
               <TextField
-                error={errors.firstName ? true : false}
+                error={errors.lastName ? true : false}
                 id="filled-error-helper-text"
                 label="Last Name*"
                 helperText={
@@ -242,16 +287,16 @@ export default function StudentForms({ handleDrawerClose }: any) {
               </FormControl>
               <TextField
                 fullWidth
-                error={errors.description ? true : false}
-                label="Description*"
+                error={errors.email ? true : false}
+                label="Email*"
                 variant="filled"
                 multiline
                 helperText={
-                  errors.description
+                  errors.email
                     ? "This field must be atleast 10 characters long"
                     : null
                 }
-                {...register("description", { minLength: 10 })}
+                {...register("email", { minLength: 10 })}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -260,7 +305,74 @@ export default function StudentForms({ handleDrawerClose }: any) {
                   ),
                 }}
                 id="fullWidth"
-              />{" "}
+              />
+
+              <TextField
+                fullWidth
+                error={errors.password ? true : false}
+                label="Password*"
+                variant="filled"
+                multiline
+                helperText={
+                  errors.password
+                    ? "This field must be atleast 10 characters long"
+                    : null
+                }
+                {...register("password", { minLength: 10 })}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {<ArticleMedium />}
+                    </InputAdornment>
+                  ),
+                }}
+                id="fullWidth"
+              />
+
+              <TextField
+                fullWidth
+                label="Upload Image"
+                variant="filled"
+                id="fullWidth"
+              />
+
+              <TextField
+                fullWidth
+                error={errors.address ? true : false}
+                label="Address *"
+                variant="filled"
+                multiline
+                helperText={
+                  errors.address
+                    ? "This field must be atleast 10 characters long"
+                    : null
+                }
+                {...register("address", { minLength: 10 })}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {<ArticleMedium />}
+                    </InputAdornment>
+                  ),
+                }}
+                id="fullWidth"
+              />
+
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-required-label">
+                  Status
+                </InputLabel>
+                <Select
+                  defaultValue={""}
+                  labelId="demo-simple-select-required-label"
+                  id="demo-simple-select-required"
+                  label="Status"
+                  {...register("gender")}
+                >
+                  <MenuItem value={"Active"}>Active</MenuItem>
+                  <MenuItem value={"Inactive"}>Inactive</MenuItem>
+                </Select>
+              </FormControl>
             </Stack>
           </Box>
           <Stack
@@ -280,7 +392,9 @@ export default function StudentForms({ handleDrawerClose }: any) {
               }}
               spacing={2}
             >
-              <button type="submit">Create</button>
+              <Button variant={"outlined"} type="submit" onClick={() => {}}>
+                Create
+              </Button>
               <Button variant={"outlined"} onClick={() => reset()}>
                 Reset
               </Button>

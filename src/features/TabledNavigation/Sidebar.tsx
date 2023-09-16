@@ -58,7 +58,7 @@ const navButtons = [
   {
     index: 2,
     name: "Books Management",
-    path: "/asdasd",
+    path: "/books",
     icon: <Books />,
   },
   {
@@ -103,25 +103,12 @@ export default function Sidebar({
   handleDrawerClose,
 }: any) {
   const theme = useTheme() as Theme;
-
   const location = useLocation();
 
   const getIndex = navButtons
     .filter((item) => (item.path === location.pathname ? item.index : 0))
     .map((item) => item.index);
-  const [selected, setSelected] = useState<number>(getIndex[0] ?? 0);
-
-  console.log(selected);
-  // const [anchorEl, setAnchorEl] = useState(null);
-  // const open = Boolean(anchorEl);
-
-  // function handleClick(event: any) {
-  //   setAnchorEl(event.currentTarget);
-  // }
-
-  // function handleClose() {
-  //   setAnchorEl(null);
-  // }
+  const [selected, setSelected] = useState<number>(getIndex[0]);
 
   const getSettings = navButtons.length - 1;
 

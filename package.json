@@ -27,7 +27,8 @@
     "react-i18next": "^13.2.0",
     "react-router-dom": "^6.15.0",
     "simplebar-react": "^3.2.4",
-    "stylis-plugin-rtl": "^2.1.1"
+    "stylis-plugin-rtl": "^2.1.1",
+    "use-mask-input": "^3.3.5"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",

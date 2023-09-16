@@ -9,10 +9,8 @@ import {
   styled,
 } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
-
 import TitleHeader from "../../components/TitleHeader";
 import { Plus } from "phosphor-react";
-import StudentTabled from "../../features/Students/StudentTabled";
 import { useState } from "react";
 import StudentForms from "../../features/Students/StudentForms";
 
@@ -57,7 +55,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function Students() {
+export default function Books() {
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -69,29 +67,30 @@ export default function Students() {
   };
 
   return (
-    <Box width={"100%"}>
-      <Stack direction={"row"} justifyContent={"space-between"}>
-        <TitleHeader title="Students" subtitle="List of Students" />
-        <Button variant="outlined" onClick={handleDrawerOpen}>
-          <Stack spacing={1} direction="row" alignItems={"center"}>
-            <Plus size={32} />
-            <Typography variant="subtitle2">Add Student</Typography>
-          </Stack>
-        </Button>
-      </Stack>
+    <>
+      <Box width={"100%"}>
+        <Stack direction={"row"} justifyContent={"space-between"}>
+          <TitleHeader title="Books" subtitle="List of Books" />
+          <Button variant="outlined" onClick={handleDrawerOpen}>
+            <Stack spacing={1} direction="row" alignItems={"center"}>
+              <Plus size={32} />
+              <Typography variant="subtitle2">Add Books</Typography>
+            </Stack>
+          </Button>
+        </Stack>
 
-      <Backdrop
-        sx={{
-          color: "#fff",
-          zIndex: (theme) => theme.zIndex.drawer + 1,
-        }}
-        open={open}
-      >
-        <Drawer anchor="right" variant="permanent" open={open}>
-          <StudentForms handleDrawerClose={handleDrawerClose} />
-        </Drawer>
-      </Backdrop>
-      <StudentTabled handleDrawerOpen={handleDrawerOpen} />
-    </Box>
+        <Backdrop
+          sx={{
+            color: "#fff",
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+          }}
+          open={open}
+        >
+          <Drawer anchor="right" variant="permanent" open={open}>
+            <StudentForms handleDrawerClose={handleDrawerClose} />
+          </Drawer>
+        </Backdrop>
+      </Box>
+    </>
   );
 }

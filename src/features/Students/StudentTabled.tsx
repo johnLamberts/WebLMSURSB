@@ -11,7 +11,7 @@ import { useState } from "react";
 import useSettings from "../../hooks/useSettings";
 import { ArrowLineRight, Eye } from "phosphor-react";
 
-export default function StudentTabled() {
+export default function StudentTabled({ handleDrawerOpen }: any) {
   const { themeMode } = useSettings();
 
   // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -37,9 +37,6 @@ export default function StudentTabled() {
       age: 35,
       phone: "(665)121-5454",
       address: "0912 Won Street, Alabama, SY 10001",
-      city: "New York",
-      zipCode: "10001",
-      registrarId: 123512,
     },
     {
       id: 2,
@@ -48,9 +45,6 @@ export default function StudentTabled() {
       age: 42,
       phone: "(421)314-2288",
       address: "1234 Main Street, New York, NY 10001",
-      city: "New York",
-      zipCode: "13151",
-      registrarId: 123512,
     },
     {
       id: 3,
@@ -59,9 +53,6 @@ export default function StudentTabled() {
       age: 45,
       phone: "(422)982-6739",
       address: "3333 Want Blvd, Estanza, NAY 42125",
-      city: "New York",
-      zipCode: "87281",
-      registrarId: 4132513,
     },
     {
       id: 4,
@@ -70,9 +61,6 @@ export default function StudentTabled() {
       age: 16,
       phone: "(921)425-6742",
       address: "1514 Main Street, New York, NY 22298",
-      city: "New York",
-      zipCode: "15551",
-      registrarId: 123512,
     },
     {
       id: 5,
@@ -81,9 +69,6 @@ export default function StudentTabled() {
       age: 31,
       phone: "(421)445-1189",
       address: "11122 Welping Ave, Tenting, CD 21321",
-      city: "Tenting",
-      zipCode: "14215",
-      registrarId: 123512,
     },
     {
       id: 6,
@@ -92,9 +77,6 @@ export default function StudentTabled() {
       age: 150,
       phone: "(232)545-6483",
       address: "1234 Canvile Street, Esvazark, NY 10001",
-      city: "Esvazark",
-      zipCode: "10001",
-      registrarId: 123512,
     },
     {
       id: 7,
@@ -103,9 +85,6 @@ export default function StudentTabled() {
       age: 44,
       phone: "(543)124-0123",
       address: "22215 Super Street, Everting, ZO 515234",
-      city: "Evertin",
-      zipCode: "51523",
-      registrarId: 123512,
     },
     {
       id: 8,
@@ -114,9 +93,6 @@ export default function StudentTabled() {
       age: 36,
       phone: "(222)444-5555",
       address: "4123 Ever Blvd, Wentington, AD 142213",
-      city: "Esteras",
-      zipCode: "44215",
-      registrarId: 512315,
     },
     {
       id: 9,
@@ -125,9 +101,6 @@ export default function StudentTabled() {
       age: 65,
       phone: "(444)555-6239",
       address: "51234 Avery Street, Cantory, ND 212412",
-      city: "Colunza",
-      zipCode: "111234",
-      registrarId: 928397,
     },
     {
       id: 10,
@@ -136,9 +109,6 @@ export default function StudentTabled() {
       age: 42,
       phone: "(222)444-5555",
       address: "4123 Easer Blvd, Wentington, AD 142213",
-      city: "Esteras",
-      zipCode: "44215",
-      registrarId: 533215,
     },
     {
       id: 11,
@@ -147,20 +117,21 @@ export default function StudentTabled() {
       age: 11,
       phone: "(444)555-6239",
       address: "51234 Fiveton Street, CunFory, ND 212412",
-      city: "Colunza",
-      zipCode: "1234",
-      registrarId: 92197,
     },
   ];
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", pinnable: true },
-    { field: "registrarId", headerName: "Registrar ID" },
     {
       field: "name",
       headerName: "Name",
       cellClassName: "name-column--cell",
       minWidth: 180,
+    },
+    {
+      field: "email",
+      minWidth: 200,
+      headerName: "Email",
     },
     {
       field: "age",
@@ -174,23 +145,11 @@ export default function StudentTabled() {
       minWidth: 180,
       headerName: "Phone Number",
     },
-    {
-      field: "email",
-      minWidth: 200,
-      headerName: "Email",
-    },
+
     {
       field: "address",
       headerName: "Address",
-      minWidth: 400,
-    },
-    {
-      field: "city",
-      headerName: "City",
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
+      minWidth: 300,
     },
     {
       field: "actions",
@@ -225,7 +184,13 @@ export default function StudentTabled() {
         return (
           <>
             <Tooltip title="Read Data" placement="bottom">
-              <IconButton onClick={onClick}>
+              <IconButton
+                onClick={() => {
+                  console.log("Hello there!");
+
+                  handleDrawerOpen();
+                }}
+              >
                 <Eye size={18} />
               </IconButton>
             </Tooltip>

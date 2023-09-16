@@ -7,6 +7,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Students from "./pages/Students/Students";
 import GeneralApp from "./pages/GeneralApp";
+import Books from "./pages/Books/Books";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<AdminLayout />}>
-              <Route index path="/app" element={<Dashboard />} />
+              <Route path="/app" element={<Dashboard />} />
               <Route path="/sample" element={<GeneralApp />} />
               <Route path="/students" element={<Students />} />
+              <Route path="/books" element={<Books />} />
             </Route>
             <Route path="*" element={<Page404 />} />
           </Routes>
